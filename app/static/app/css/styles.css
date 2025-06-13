@@ -1,0 +1,208 @@
+/* Colores y tipografía inspirados en macOS */
+:root {
+    --mac-bg-light: #d6f2d6; /* Un verde suave pero más visible */
+    /* O puedes probar con #c0edc0 si quieres un poco más de saturación */
+
+    --mac-card-bg: #ffffff; /* Fondo de la tarjeta (blanco puro) */
+    --mac-border-color: #e0e0e0; /* Color de borde sutil para elementos y tarjetas */
+    --mac-shadow-color: rgba(0, 0, 0, 0.08); /* Sombra suave para la tarjeta */
+    --mac-text-color: #333333; /* Color de texto principal (gris oscuro) */
+    --mac-label-color: #666666; /* Color para las etiquetas de los formularios */
+    --mac-primary-blue: #007aff; /* Azul primario (como los botones y enlaces de macOS) */
+    --mac-primary-blue-hover: #005ce6; /* Azul primario más oscuro para hover */
+    --mac-success-green: #28a745; /* Verde para mensajes de éxito */
+    --mac-danger-red: #dc3545; /* Rojo para mensajes de error */
+    --mac-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+    font-family: var(--mac-font-family);
+    background-color: var(--mac-bg-light); /* Fondo sólido con color claro */
+    color: var(--mac-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 0;
+}
+
+.card {
+    border: 1px solid var(--mac-border-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--mac-shadow-color);
+    overflow: hidden;
+    background-color: var(--mac-card-bg);
+    max-width: 450px;
+    width: 100%;
+}
+
+.card-header {
+    background: linear-gradient(180deg, #f9f9f9, #f0f0f0);
+    border-bottom: 1px solid var(--mac-border-color);
+    padding: 20px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    text-align: center;
+}
+
+.card-header h3 {
+    color: var(--mac-text-color);
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--mac-label-color);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid var(--mac-border-color);
+    border-radius: 8px;
+    padding: 12px 15px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    /* Nuevo: Añadir un placeholder estilizado para que se vea más como macOS */
+    color: var(--mac-text-color); /* Color del texto del input */
+}
+
+/* Nuevo: Estilo para el placeholder */
+.form-control::placeholder {
+    color: #b0b0b0; /* Un gris más claro para el placeholder */
+    opacity: 1; /* Para Firefox */
+}
+
+.form-control:focus {
+    border-color: var(--mac-primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--mac-primary-blue);
+    border-color: var(--mac-primary-blue);
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: 600;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 122, 255, 0.2);
+    width: 100%;
+    cursor: pointer; /* Indica que es un elemento clickeable */
+}
+
+.btn-primary:hover {
+    background-color: var(--mac-primary-blue-hover);
+    border-color: var(--mac-primary-blue-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0, 122, 255, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 122, 255, 0.2);
+}
+
+.alert {
+    border-radius: 8px;
+    font-size: 0.95em;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    display: flex; /* Para alinear el botón de cerrar */
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Nuevo: Estilos para el botón de cerrar de las alertas (Bootstrap) */
+.alert .btn-close {
+    font-size: 0.8em;
+    padding: 0;
+    margin: 0;
+    color: inherit; /* Para que el icono tome el color del texto de la alerta */
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.alert .btn-close:hover {
+    opacity: 1;
+}
+
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--mac-success-green);
+    border-color: rgba(40, 167, 69, 0.2);
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--mac-danger-red);
+    border-color: rgba(220, 53, 69, 0.2);
+}
+
+.text-danger {
+    margin-top: 5px; /* Espacio para mensajes de error debajo del input */
+}
+
+.text-danger small {
+    color: var(--mac-danger-red);
+    font-size: 0.85em;
+}
+
+/* Nuevo: Estilo para los errores que no son de campo (non_field_errors) */
+.alert-danger:has(+ .d-grid) { /* Si la alerta está justo antes del botón */
+    margin-bottom: 20px;
+    margin-top: -10px; /* Ajusta el espacio si aparece justo antes del botón */
+}
+
+
+.text-center {
+    margin-top: 25px;
+}
+
+.text-center p {
+    margin-bottom: 8px;
+    line-height: 1.5; /* Mejora la legibilidad del texto */
+}
+
+.text-center a {
+    color: var(--mac-primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.text-center a:hover {
+    color: var(--mac-primary-blue-hover);
+    text-decoration: underline;
+}
+
+/* Ajustes para los inputs de Django si no usan la clase 'form-control' por defecto */
+/* Asegúrate de que tus widgets de formulario de Django usen las clases 'form-control' */
+/* Puedes hacer esto en tu forms.py:
+   from django import forms
+
+   class LoginForm(forms.Form):
+       username = forms.CharField(
+           label="Nombre de usuario",
+           widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tu nombre de usuario'})
+       )
+       password = forms.CharField(
+           label="Contraseña",
+           widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Tu contraseña'})
+       )
+*/
